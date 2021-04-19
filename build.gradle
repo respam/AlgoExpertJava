@@ -1,0 +1,27 @@
+apply plugin : "java"
+
+//group 'com.respam.algoexpert.solutions'
+//version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task printSourceSetInformation(){
+    doLast{
+        sourceSets.each { srcSet ->
+            println "["+srcSet.name+"]"
+            print "-->Source directories: "+srcSet.allJava.srcDirs+"\n"
+            print "-->Output directories: "+srcSet.output.classesDirs.files+"\n"
+            println ""
+        }
+    }
+}
