@@ -5,16 +5,17 @@ import java.util.Arrays;
 public class MinimumWaitingTime {
     public int minimumWaitingTime(int[] queries) {
         Arrays.sort(queries);
-        int waitingTime = 0;
         int totalWaitingTime = 0;
 
         if(queries.length == 1) {
             return totalWaitingTime;
         } else {
             for(int i=0; i<queries.length-1; i++) {
-                waitingTime = queries[i] + waitingTime;
-                queries[i] = waitingTime;
-                totalWaitingTime = totalWaitingTime + waitingTime;
+
+                if (i != 0) {
+                    queries[i] = queries[i] + queries[i - 1];
+                }
+                totalWaitingTime = totalWaitingTime + queries[i];
             }
         }
         return totalWaitingTime;
