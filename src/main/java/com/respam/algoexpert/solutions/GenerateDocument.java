@@ -15,11 +15,12 @@ public class GenerateDocument {
         HashMap<Character, Integer> documentMap = new HashMap<>();
 
         for (char each:characterArray) {
-            characterMap.putIfAbsent(each, 1);
 
             if (characterMap.get(each) != null){
                 characterMap.put(each, characterMap.get(each) + 1);
             }
+
+            characterMap.putIfAbsent(each, 1);
         }
 
         for (char each:documentArray) {
